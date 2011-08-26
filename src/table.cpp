@@ -21,15 +21,13 @@ void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination 
   SDL_BlitSurface( source, NULL, destination, &offset );
 }
 
-bool init(SDL_Surface *screen) {
-  if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 ) { return false; }
 
-  screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE );
-  if( screen == NULL ) { return false; }
-  
-  SDL_WM_SetCaption( "PNG test", NULL ); //Set the window caption
-
-  return true; //If everything initialized fine
+SDL_Surface* initScreen(SDL_Surface *scn) {
+  //init everything                                                                                                            
+  if(SDL_Init(SDL_INIT_EVERYTHING) == -1) { return NULL; }
+  scn = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
+  if(scn == NULL) { return NULL; } //checks screen good                                                                         
+  return scn; //if everything initialized properly                                                                             
 }
 
 void clean_up(SDL_Surface *s1, SDL_Surface *s2) {
