@@ -16,7 +16,7 @@ int main( void ) {
   
   if( (screen = initScreen(screen)) == NULL ) { return 1; }
   
-  image = load_image( "../images/Table.png" );
+  image = load_image( "../images/Air_Hockey_Layout.png" );
   if( image == NULL ) { return 1; }
   
   apply_surface( 0, 0, image, screen );
