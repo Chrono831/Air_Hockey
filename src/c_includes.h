@@ -4,34 +4,25 @@
  *
  * dylan.p.hall@gmail.com
  *
- * stdincludes.h
+ * c_includes.h
  *
  * 
  */
 
-#ifndef STDINCLUDES_H_INCLUDED
-#define STDINCLUDES_H_INCLUDED
+#ifndef C_INCLUDES_H_INCLUDED
+#define C_INCLUDES_H_INCLUDED
 
-//Local Headers
-#include "constants.h"
 
-//SDL Libraries
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <ctype.h>
+#include <time.h>
+#include <math.h>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-
-//C++ STL
-#include <string> //strings
-#include <iostream> //std I/O
-#include <fstream> //files
-#include <vector> //array like manip
-
-//C Standard Libraries
-#include <cstdio>
-#include <cstdlib>
-#include <stdbool.h>
-#include <cctype>
-#include <ctime>
-#include <cmath>
+#include "constants.h"
 
 
 #ifdef DEBUG
@@ -57,7 +48,7 @@
 #endif
 
 
-//typedef char * string; // for C usage only
+typedef char * string; // for C usage only
 
 
 #endif
