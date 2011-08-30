@@ -17,11 +17,12 @@
 #include "staticmethods.h"
 
 
-/** Loads the image specified in by the filename parameter and converts it to the screen format
+/** 
+    Loads the image specified in by the filename parameter and converts it to the screen format.  Returns NULL if unable to load.
     @param filename name of file to be loaded
     @return formattedImage image formatted to screen format
 */
-SDL_Surface* loadImage(string filename) {
+SDL_Surface* loadImage(std::string filename) {
   SDL_Surface *loadedImage = NULL;
   SDL_Surface *formattedImage = NULL;
 
@@ -49,14 +50,17 @@ SDL_Surface* loadImage(string filename) {
     @param clips portion of image to blit
 */
 void createSurface(SDL_Surface *src, SDL_Surface *dst, int offsetX, int offsetY, SDL_Rect *clips) {
-  SDL_Rect offset;// = new SDL_Rect();                                                                 
-  offset.x = offsetX;
-  offset.y = offsetY;
+  SDL_Rect *offset = (SDL_Rect *) malloc (sizeof(SDL_Rect *));
+  offset->x = offsetX;
+  offset->y = offsetY;
+  SDL_BlitSurface(src, NULL, dst, offset);
+/*
   int blitCheck = 0;
   blitCheck = SDL_BlitSurface(src, clips, dst, &offset);
   if(blitCheck != GOOD_VALUE) {//unsuccessful                                                                       
       printf("Error Blitting.\n"); return;
   }
+*/
 }
 
 

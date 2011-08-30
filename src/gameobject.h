@@ -20,7 +20,7 @@
 
 
 #include "stdincludes.h"
-
+#include "staticmethods.h"
 
 class GameObject {
  private:
@@ -48,7 +48,7 @@ class GameObject {
 
 };
 
-#include "staticmethods.h"
+//#include "staticmethods.h"
 
 
 #endif

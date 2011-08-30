@@ -22,7 +22,7 @@
 
 
 //Support Loading functions
-SDL_Surface* loadImage( std::string filename);
+SDL_Surface* loadImage( std::string );
 void createSurface(SDL_Surface *src, SDL_Surface *dst, int offsetX, int offsetY, SDL_Rect *clips = NULL);
   
 

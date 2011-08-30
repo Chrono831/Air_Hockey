@@ -21,6 +21,7 @@
  Default Constructor.  Initializes x, y, dx, dy to 0 and image to NULL.
 */
 GameObject::GameObject() {
+  image = (SDL_Surface *) malloc (sizeof(SDL_Surface *));
   setX(0);
   setY(0);
   setDx(0);
@@ -90,7 +91,7 @@ void GameObject::setY(int newY) {
   @param newDx value to set as dx.
 */
 void GameObject::setDx(float newDx) {
-  //if ( (newDx > MAX_DX) ) return;
+  if ( (newDx > MAX_DX) ) return;
   else { dx = newDx; }
 }
 
@@ -100,7 +101,7 @@ void GameObject::setDx(float newDx) {
   @param newDy value to set as dy.
 */
 void GameObject::setDy(float newDy) {
-  //if ( (newDy > MAX_DY) ) return;
+  if ( (newDy > MAX_DY) ) return;
   else { dy = newDy; }
 }
 
@@ -109,14 +110,35 @@ void GameObject::setDy(float newDy) {
   @param newImage SDL_Surface * to set as the image.
 */
 void GameObject::setImage(SDL_Surface * newImage) {
-  
-
+  if (newImage != NULL) { image = newImage; }
 }
+
+
 /**
   Sets the image.  Expects a filename to go load an image from.
   @param filename name of the file to load as the image.
 */
 void GameObject::setImage(std::string filename) {
-  cout << filename << endl;
+  std::cout << filename << std::endl;
+  // SDL_Surface * temp = loadImage( filename );
+  
+  
+  SDL_Surface *loadedImage = NULL;
+  SDL_Surface *formattedImage = NULL;
 
+  loadedImage = IMG_Load( filename.c_str() );
+
+  if(loadedImage != NULL) {
+    formattedImage = SDL_DisplayFormat(loadedImage);
+  } //converts image to settings specified by SDL_SetVideoMode
+  SDL_FreeSurface(loadedImage);
+
+  if(formattedImage != NULL) {
+    SDL_SetColorKey(formattedImage, SDL_SRCCOLORKEY, SDL_MapRGB(formattedImage->format, 0xFF, 0xFF, 0xFF));
+  } //converts image to settings specified by SDL_SetVideoMode
+  // return formattedImage;
+
+  image = formattedImage;
+
+  //  setImage(temp);
 }
