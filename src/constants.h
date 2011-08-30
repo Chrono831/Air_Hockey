@@ -21,4 +21,10 @@ const int SCREEN_HEIGHT = 768;
 const int SCREEN_BPP = 32;
 
 
+//Enumerations
+const int ERROR_INT = -1;
+const int GOOD_VALUE = 0;
+
+
+
 #endif
