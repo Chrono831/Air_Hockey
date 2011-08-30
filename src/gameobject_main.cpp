@@ -10,34 +10,31 @@
  * 
  * Created: Aug 30 2011 10:32:03
  * 
- * Comments: 
+ * Comments: Testing file for GameObject class
  * 
  */
 
-#include "stdincludes.h"
 #include "gameobject.h"
-#include "staticmethods.h"
 
 int main (int argc, char *argv[]) {
   std::cout << "Hello, World!\n";
 
-  
-  SDL_Surface *screen = NULL;
+  GameObject *screen = new GameObject();
   GameObject *thing = new GameObject();
-  
-  if( (screen = initScreen(screen)) == NULL ) { return 1; }
+
+  screen->setImage(initScreen(screen->getImage()));
+  if( screen->getImage()  == NULL ) { return 1; }
   
   thing->setImage("../images/Air_Hockey_Layout.png");
 
-  createSurface(thing->getImage(), screen, 0, 0, NULL);
-  //  apply_surface( 0, 0, thing->getImage(), screen );
-  if( SDL_Flip( screen ) == -1 ) { return 1; }
+  createSurface(thing->getImage(), screen->getImage(), 0, 0, NULL);
+
+  if( SDL_Flip( screen->getImage() ) == -1 ) { return 1; }
   
   SDL_Delay( 5000 );
-   
-  clean_up(NULL, screen);
-  return 0;
-
+  
+  delete screen;
+  delete thing;
 
 }
 
