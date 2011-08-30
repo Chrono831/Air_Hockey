@@ -26,7 +26,8 @@
    @param filename string name of the file to load
    @return optimizedImage image formatted by SDL_DisplayFormat(*)
  */
-SDL_Surface *load_image( std::string filename, SDL_Surface *dest ) {
+SDL_Surface * table::load_image( std::string filename, SDL_Surface *dest ) {
+  if (dest == NULL) { return NULL; }
   SDL_Surface* loadedImage = NULL;
   SDL_Surface* optimizedImage = NULL;
   
@@ -40,16 +41,15 @@ SDL_Surface *load_image( std::string filename, SDL_Surface *dest ) {
   return optimizedImage;
 }
 
-void apply_surface( int x, int y, SDL_Surface* src, SDL_Surface* dest ) {
-  SDL_Rect *offset;
+void table::apply_surface( int x, int y, SDL_Surface* src, SDL_Surface* dest ) {
+  SDL_Rect *offset = (SDL_Rect *) malloc(sizeof(SDL_Rect *));
   offset->x = x;
   offset->y = y;
-  
   SDL_BlitSurface( src, NULL, dest, offset );
 }
 
 
-SDL_Surface* initScreen(SDL_Surface *scn) {
+SDL_Surface* table::initScreen(SDL_Surface *scn) {
   //init everything                                                                                                            
   if(SDL_Init(SDL_INIT_EVERYTHING) == -1) { return NULL; }
   scn = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
@@ -59,7 +59,7 @@ SDL_Surface* initScreen(SDL_Surface *scn) {
 
 
 //Needs to be rewritted with varargs or something similar
-void clean_up(SDL_Surface *s1, SDL_Surface *s2) {
+void table::clean_up(SDL_Surface *s1, SDL_Surface *s2) {
   SDL_FreeSurface(s1); //Free the surface
   SDL_FreeSurface(s2); //Free the surface
   SDL_Quit();
