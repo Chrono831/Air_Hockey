@@ -26,7 +26,7 @@
    @param filename string name of the file to load
    @return optimizedImage image formatted by SDL_DisplayFormat(*)
  */
-SDL_Surface *load_image( std::string filename ) {
+SDL_Surface *load_image( std::string filename, SDL_Surface *dest ) {
   SDL_Surface* loadedImage = NULL;
   SDL_Surface* optimizedImage = NULL;
   
@@ -36,15 +36,16 @@ SDL_Surface *load_image( std::string filename ) {
     optimizedImage = SDL_DisplayFormat( loadedImage );
     SDL_FreeSurface( loadedImage );
   }
+  dest = optimizedImage;
   return optimizedImage;
 }
 
-void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination ) {
-  SDL_Rect offset;
-  offset.x = x;
-  offset.y = y;
+void apply_surface( int x, int y, SDL_Surface* src, SDL_Surface* dest ) {
+  SDL_Rect *offset;
+  offset->x = x;
+  offset->y = y;
   
-  SDL_BlitSurface( source, NULL, destination, &offset );
+  SDL_BlitSurface( src, NULL, dest, offset );
 }
 
 

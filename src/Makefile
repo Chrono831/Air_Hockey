@@ -24,7 +24,9 @@ else
 	SDL_LIB= `sdl-config --libs` -lSDL_image
 endif
 
+CC=gcc
 CXX=g++
+CFLAGS=-W -Wall -std=c99
 CXXFLAGS=-W -Wall -pedantic 
 #may need to add '-fpermissive' to flags
 
@@ -41,6 +43,8 @@ MODULES := $^
 SOURCES := $(MODULES).cpp 
 OBJECTS = $(patsubst %.cpp, %.o, %(SOURCES))
 
+#/usr/bin/ruby1.9.1
+
 
 ifeq ($(DEBUG),true)
 	CFLAGS+=-DDEBUG -g
@@ -48,8 +52,12 @@ endif
 
 all: 
 
+
 %.o: %.cpp 
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@ 
+
+%.o: %.c 
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ 
 
 $(MODULES): $(OBJECTS) 
 	$(CXX) $(LDFLAGS) $(OBJECTS) -o $(MODULES)

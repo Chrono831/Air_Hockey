@@ -87,7 +87,7 @@ void writeHeader(FILE *fout, string filename, personalInfo *author) {
 	  "\n"
 	  "\n"
 	  "int main (int argc, char *argv[]) {\n"
-	  "  fprintf(stdout, \"Hello, World!\\n\");\n"
+	  "  std::cout << \"Hello, World!\\n\";\n"
 	  "\n"
 	  "\n"
 	  "  return 0;\n"
