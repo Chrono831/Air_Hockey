@@ -17,7 +17,6 @@
 #include "gamebox.h"
 
 
-
 int main (int argc, char *argv[]) {
   std::cout << "Hello, World!\n";
   
@@ -46,8 +45,6 @@ int main (int argc, char *argv[]) {
 
   if( SDL_Flip( screen->getImage() ) == -1 ) { return 1; }
   
-
-
 
   SDL_Delay( 1000 );
   
