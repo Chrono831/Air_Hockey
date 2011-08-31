@@ -21,7 +21,7 @@
  Default Constructor.  Initializes x, y, dx, dy to 0 and image to NULL.
 */
 GameObject::GameObject() {
-  image = (SDL_Surface *) malloc (sizeof(SDL_Surface *));
+  image = new SDL_Surface ;
   setX(0);
   setY(0);
   setDx(0);
@@ -33,7 +33,7 @@ GameObject::GameObject() {
  Destructor.  Frees the SDL_Surface * for the image.
 */
 GameObject::~GameObject() {
-  free(getImage());
+  delete image;
 }   
 
 /**

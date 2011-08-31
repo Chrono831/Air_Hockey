@@ -17,14 +17,18 @@
 #ifndef GAMEBOX_H_INCLUDED
 #define GAMEBOX_H_INCLUDED
 
-#include "stdincludes.h"
+//#include "stdincludes.h"
+#include "gameobject.h"
 
-class GameBox : public GameObject {
+class GameBox: public GameObject {
  private:
   int w; //width
   int h; //height
 
  public:
+  GameBox();
+  ~GameBox();
+
   int getW(void);
   int getH(void);
   float getDiag(void);
@@ -32,8 +36,10 @@ class GameBox : public GameObject {
   
   void setW(int);
   void setH(int);
-  void setDiag(float r, float A);
+  void setDiag(float, float);
   void setCenter(int, int);
+
+  void moveBox(int, int);
 };
 
 
