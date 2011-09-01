@@ -1,0 +1,33 @@
+/**
+ * Air_Hockey Project File
+ * https://github.com/Chrono831/Air_Hockey
+ * Dylan Hall
+ * dylan.p.hall@gmail.com
+ * github: Chrono831
+ * 
+ * 
+ * README
+ * 
+ * Created: Aug 31 2011 16:29:38
+ * 
+ */
+
+The class structure I'm working with right now is
+
+GameObject -> GameBox -- initialize as 'screen', 'table', 'board', etc
+	   -> GameCircle -- init as 'puck' paddle'
+(GameCircle not yet started)
+
+Notes:
+ - Makefile : really doesn't do anything useful right now; I made a quick script
+    file to run in it's place; nothing beautiful, but it works; just edit and add
+    to that as needed until we figure out the best thing to do with the Makefile
+ - compile.sh : above mentioned script, use the template commands in here if you
+    need to make anything else compile.
+ - Compiling from that script the only warnings I get are the "warning: unused 
+    parameter 'blah'" warnings; no problem
+ - None of these files are perfect, there is still a lot of documentation, tweaking,
+    and complete re-writing needed for many functions; I wanted to get something
+    started that could be worked off of and I think I've achieved that.
+
+
