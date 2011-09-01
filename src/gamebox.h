@@ -27,6 +27,7 @@ class GameBox: public GameObject {
 
  public:
   GameBox();
+  GameBox(int, int, int, int, std::string);//x,y,w,h,image
   ~GameBox();
 
   int getW(void);

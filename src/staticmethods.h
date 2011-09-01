@@ -27,6 +27,7 @@ void createSurface(SDL_Surface *src, SDL_Surface *dst, int offsetX, int offsetY,
   
 
 //Setup / Cleanup functions
+SDL_Surface* startup(SDL_Surface *);
 SDL_Surface* initScreen(SDL_Surface *);
 void clean_up(SDL_Surface *, SDL_Surface *); //mod to return success
 

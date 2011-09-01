@@ -21,41 +21,47 @@
 
 
 int main (int argc, char *argv[]) {
-  std::cout << "Hello, World!\n";
-  
+ std::cout << "Hello, World!\n";
+  //These must be the first things in the program! They init SDL.
   GameObject *screen = new GameObject();
-  GameBox *table = new GameBox();//need new constructor:
-  GameBox *board = new GameBox();//x,y,w,h,image
-  board->setW(10);
-  board->setH(110);
-  board->setX(50);
-  board->setY(550);
-
-
-
-  std::cout << "w = " << board->getW() << "\n";
-  std::cout << "h = " << board->getH() << "\n";
-  std::cout << "x = " << board->getX() << "\n";
-  std::cout << "y = " << board->getY() << "\n";
-
-
-  screen->setImage(initScreen(screen->getImage()));
-  if( screen->getImage()  == NULL ) { return 1; }
+  screen->setImage(startup(screen->getImage()));
+  //Okay, not other things can happen
   
-  board->setImage("../images/Board.png");
+  GameBox *table = new GameBox(TABLE_X_OFFSET, TABLE_Y_OFFSET, 
+			       TABLE_WIDTH, TABLE_HEIGHT, TABLE_IMAGE);
+  GameBox *board = new GameBox(BOARD_X_OFFSET, BOARD_Y_OFFSET, 
+			       BOARD_WIDTH, BOARD_HEIGHT, BOARD_IMAGE);
 
-  createSurface(board->getImage(), screen->getImage(), 0, 0, NULL);
+  std::cout << "Board info:\t"; 
+  std::cout << "w=" << board->getW() << "\t";
+  std::cout << "h=" << board->getH() << "\t";
+  std::cout << "x=" << board->getX() << "\t";
+  std::cout << "y=" << board->getY() << "\n";
+  std::cout << "Table info:\t"; 
+  std::cout << "w=" << table->getW() << " \t";
+  std::cout << "h=" << table->getH() << "\t";
+  std::cout << "x=" << table->getX() << "\t";
+  std::cout << "y=" << table->getY() << "\n";
+
+
+  
+  createSurface(board->getImage(), screen->getImage(), 0, 0, NULL);  
+  createSurface(table->getImage(), screen->getImage(), TABLE_X_OFFSET, TABLE_Y_OFFSET, NULL);
 
   if( SDL_Flip( screen->getImage() ) == -1 ) { return 1; }
   
-
   SDL_Delay( 1000 );
   
   delete screen;
-  delete board;
   delete table;
-
+  delete board;
   return 0;
-
 }
+
+
+
+
+
+
+
 

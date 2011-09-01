@@ -31,6 +31,7 @@ class GameObject {
 
  public:
   GameObject(); //default init : x,y,dx,dy = 0; image = NULL
+  GameObject(int, int, float, float, std::string);
   ~GameObject(); //destructor - SDL_Surface*
    
   int getX(void);

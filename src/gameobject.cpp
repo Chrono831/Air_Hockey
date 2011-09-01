@@ -21,7 +21,7 @@
  Default Constructor.  Initializes x, y, dx, dy to 0 and image to NULL.
 */
 GameObject::GameObject() {
-  image = new SDL_Surface ;
+  image = new SDL_Surface;
   setX(0);
   setY(0);
   setDx(0);
@@ -30,11 +30,25 @@ GameObject::GameObject() {
 }
 
 /**
+ Constructor.  Initializes x, y, dx, dy and image to input values.
+*/
+GameObject::GameObject(int newX, int newY, float newDx, float newDy, std::string newImage) {
+  image = new SDL_Surface;
+  setX(newX);
+  setY(newY);
+  setDx(newDx);
+  setDy(newDy);
+  setImage(newImage);
+}
+
+
+/**
  Destructor.  Frees the SDL_Surface * for the image.
 */
 GameObject::~GameObject() {
   delete image;
 }   
+
 
 /**
   Returns the x value.
@@ -42,11 +56,13 @@ GameObject::~GameObject() {
 */
 int GameObject::getX(void) { return x; }
 
+
 /**
   Returns the y value.
   @return x y-position of object
 */
 int GameObject::getY(void) { return y; }
+
 
 /**
   Returns the dx value.
@@ -54,17 +70,20 @@ int GameObject::getY(void) { return y; }
 */
 float GameObject::getDx(void)  { return dx; }   
 
+
 /**
   Returns the dy value.
   @return dy y component of the velocity vector
 */
 float GameObject::getDy(void)  { return dy; }
+
  
 /**
   Returns the image.  Not const so that it can be manipulated.
   @return image SDL_Surface * to the image.
 */
 SDL_Surface * GameObject::getImage(void)  { return image; }
+
 
 /**
   Sets the x value.  valid ranges from [0 - SCREEN_WIDTH]
@@ -120,6 +139,7 @@ void GameObject::setImage(SDL_Surface * newImage) {
 */
 void GameObject::setImage(std::string filename) {
   std::cout << filename << std::endl;
+  
   // SDL_Surface * temp = loadImage( filename );
   
   

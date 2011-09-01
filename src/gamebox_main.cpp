@@ -19,38 +19,27 @@
 
 int main (int argc, char *argv[]) {
   std::cout << "Hello, World!\n";
-  
+  //These must be the first things in the program! They init SDL.
   GameObject *screen = new GameObject();
-  GameBox *thing = new GameBox();
-
-  thing->setW(10);
-  thing->setH(110);
-  thing->setX(50);
-  thing->setY(550);
-
-
-
+  screen->setImage(startup(screen->getImage()));
+  //Okay, not other things can happen
+  std::string pic = "../images/Air_Hockey_Layout.png"; 
+  std::cout << pic;
+  GameBox *thing = new GameBox(0,0, BOARD_WIDTH, BOARD_HEIGHT, pic);
   std::cout << "w = " << thing->getW() << "\n";
   std::cout << "h = " << thing->getH() << "\n";
   std::cout << "x = " << thing->getX() << "\n";
   std::cout << "y = " << thing->getY() << "\n";
 
-
-  screen->setImage(initScreen(screen->getImage()));
-  if( screen->getImage()  == NULL ) { return 1; }
   
-  thing->setImage("../images/Air_Hockey_Layout.png");
-
   createSurface(thing->getImage(), screen->getImage(), 0, 0, NULL);
 
   if( SDL_Flip( screen->getImage() ) == -1 ) { return 1; }
   
-
   SDL_Delay( 1000 );
   
   delete screen;
   delete thing;
-
   return 0;
 }
 

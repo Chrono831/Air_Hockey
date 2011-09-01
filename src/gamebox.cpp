@@ -29,6 +29,16 @@ GameBox::GameBox() {
   h = 0;
 }
 
+
+GameBox::GameBox(int newX, int newY, int newW, int newH, std::string newImage) {
+  GameBox();
+  GameObject::setX(newX);
+  GameObject::setY(newY);
+  setW(newW);
+  setH(newH);
+  GameObject::setImage(newImage);
+}
+
 GameBox::~GameBox() {
   //no new objects to delete
 }

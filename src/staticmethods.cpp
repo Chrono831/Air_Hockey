@@ -72,6 +72,15 @@ SDL_Surface* initScreen(SDL_Surface *scn) {
   return scn; //if everything initialized properly                                                                             
 }
 
+SDL_Surface * startup(SDL_Surface *scn) {
+  scn = initScreen(scn);
+  if (scn == NULL) { 
+    fprintf(stderr, "Unable to create screen. Exiting.\n");
+    exit(1);
+  }
+  return scn; 
+}
+
 
 //Needs to be rewritted with varargs or something similar
 void clean_up(SDL_Surface *s1, SDL_Surface *s2) {
