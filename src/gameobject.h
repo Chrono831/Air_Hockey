@@ -31,8 +31,11 @@ class GameObject {
 
  public:
   GameObject(); //default init : x,y,dx,dy = 0; image = NULL
+  GameObject(const GameObject &); //copy constructor
   ~GameObject(); //destructor - SDL_Surface*
-   
+
+  GameObject & operator=(const GameObject &); //deep copy overloaded assignment
+    
   int getX(void);
   int getY(void);
   void setX(int);

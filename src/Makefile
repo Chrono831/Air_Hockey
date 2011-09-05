@@ -24,6 +24,7 @@ else
 	SDL_LIB= `sdl-config --libs` -lSDL_image
 endif
 
+		          
 CC=gcc
 CXX=g++
 CFLAGS=-W -Wall -std=c99
@@ -62,6 +63,20 @@ all:
 $(MODULES): $(OBJECTS) 
 	$(CXX) $(LDFLAGS) $(OBJECTS) -o $(MODULES)
 
+#########################
+# These are specific build commands for testing modules
+# It would be preferable to not have these, but they
+# work for now
+# #######################
+
+gameobject_main : gameobject.o staticmethods.o 
+	        $(CXX) $(LDFLAGS) gameobject_main.cpp gameobject.o staticmethods.o -o gameobject_main
+
+ : stack.o PE_17-5.o
+	        $(CC) $(CFLAGS) $(LDFLAGS) PE_17-5.c stack.o -o PE_17-5
+
+
+
 .PHONY: clean
 clean:
-	rm -f *.o *.out *.dat
+	rm -f *.o *.out *.dat *_main

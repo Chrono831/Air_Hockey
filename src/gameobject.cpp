@@ -21,7 +21,7 @@
  Default Constructor.  Initializes x, y, dx, dy to 0 and image to NULL.
 */
 GameObject::GameObject() {
-  image = (SDL_Surface *) malloc (sizeof(SDL_Surface *));
+  image = new SDL_Surface;//(SDL_Surface *) malloc (sizeof(SDL_Surface *));
   setX(0);
   setY(0);
   setDx(0);
@@ -30,11 +30,45 @@ GameObject::GameObject() {
 }
 
 /**
+ * Copy Constructor.  Copies all data into a new object
+ */
+GameObject::GameObject(const GameObject & gobj) {
+  image = new SDL_Surface;
+  setX(gobj.x);
+  setY(gobj.y);
+  setDx(gobj.dx);
+  setDy(gobj.dy);
+  setImage(gobj.image);
+}
+
+/**
  Destructor.  Frees the SDL_Surface * for the image.
 */
 GameObject::~GameObject() {
-  free(getImage());
+  delete image;//free(getImage());
 }   
+
+
+/**
+ * Assignement operator.  Performs a deep copy of the Rvalue object onto the Lvalue object
+ * @param gobj GameObject to copy
+ * @return copy of gobj
+ */
+GameObject & GameObject::operator=(const GameObject & gobj) {
+  if(this == &gobj) { return *this; }
+  delete image;
+  image = new SDL_Surface;
+  setX(gobj.x);
+  setY(gobj.y);
+  setDx(gobj.dx);
+  setDy(gobj.dy);
+  setImage(gobj.image);
+  return *this;
+}
+
+
+
+
 
 /**
   Returns the x value.
