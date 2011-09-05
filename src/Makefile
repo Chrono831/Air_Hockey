@@ -12,7 +12,7 @@
 #Detects system type for using OpenGL drivers
 #
 MACHINE= $(shell uname -s)
-ifeq ($(MACHINE),Darwin)
+ifeq ($(MACHINE),Darwin) #Mac
 	OPENGL_INC= -FOpenGL
 	OPENGL_LIB= -framework OpenGL
 	SDL_INC= `sdl-config --cflags`
@@ -44,12 +44,16 @@ MODULES := $^
 SOURCES := $(MODULES).cpp 
 OBJECTS = $(patsubst %.cpp, %.o, %(SOURCES))
 
+#list object files here for now
+OBJECTS += staticmethods.o gameobject.o gamebox.o 
+
 #/usr/bin/ruby1.9.1
 
 
 ifeq ($(DEBUG),true)
 	CFLAGS+=-DDEBUG -g
 endif
+
 
 all: 
 

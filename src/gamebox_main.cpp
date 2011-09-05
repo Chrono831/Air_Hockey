@@ -6,15 +6,16 @@
  * github: Chrono831
  * 
  * 
- * gameobject_main.cpp
+ * gamebox_main.cpp
  * 
- * Created: Aug 30 2011 10:32:03
+ * Created: Aug 29 2011 16:56:41
  * 
- * Comments: Testing file for GameObject class
+ * Comments: 
  * 
  */
 
-#include "gameobject.h"
+#include "gamebox.h"
+
 
 int main (int argc, char *argv[]) {
   std::cout << "Hello, World!\n";
@@ -22,8 +23,14 @@ int main (int argc, char *argv[]) {
   GameObject *screen = new GameObject();
   screen->setImage(startup(screen->getImage()));
   //Okay, not other things can happen
+  std::string pic = "../images/Air_Hockey_Layout.png"; 
+  std::cout << pic;
+  GameBox *thing = new GameBox(0,0, BOARD_WIDTH, BOARD_HEIGHT, pic);
+  std::cout << "w = " << thing->getW() << "\n";
+  std::cout << "h = " << thing->getH() << "\n";
+  std::cout << "x = " << thing->getX() << "\n";
+  std::cout << "y = " << thing->getY() << "\n";
 
-  GameObject *thing = new GameObject(0,0,0,0,"../images/Air_Hockey_Layout.png");
   
   createSurface(thing->getImage(), screen->getImage(), 0, 0, NULL);
 

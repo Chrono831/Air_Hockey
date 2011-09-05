@@ -21,7 +21,11 @@
  Default Constructor.  Initializes x, y, dx, dy to 0 and image to NULL.
 */
 GameObject::GameObject() {
+<<<<<<< HEAD
   image = new SDL_Surface;//(SDL_Surface *) malloc (sizeof(SDL_Surface *));
+=======
+  image = new SDL_Surface;
+>>>>>>> c1771115b985b0d715021d3168a2b9cd336915d0
   setX(0);
   setY(0);
   setDx(0);
@@ -30,6 +34,7 @@ GameObject::GameObject() {
 }
 
 /**
+<<<<<<< HEAD
  * Copy Constructor.  Copies all data into a new object
  */
 GameObject::GameObject(const GameObject & gobj) {
@@ -41,10 +46,25 @@ GameObject::GameObject(const GameObject & gobj) {
   setImage(gobj.image);
 }
 
+=======
+ Constructor.  Initializes x, y, dx, dy and image to input values.
+*/
+GameObject::GameObject(int newX, int newY, float newDx, float newDy, std::string newImage) {
+  image = new SDL_Surface;
+  setX(newX);
+  setY(newY);
+  setDx(newDx);
+  setDy(newDy);
+  setImage(newImage);
+}
+
+
+>>>>>>> c1771115b985b0d715021d3168a2b9cd336915d0
 /**
  Destructor.  Frees the SDL_Surface * for the image.
 */
 GameObject::~GameObject() {
+<<<<<<< HEAD
   delete image;//free(getImage());
 }   
 
@@ -70,11 +90,18 @@ GameObject & GameObject::operator=(const GameObject & gobj) {
 
 
 
+=======
+  delete image;
+}   
+
+
+>>>>>>> c1771115b985b0d715021d3168a2b9cd336915d0
 /**
   Returns the x value.
   @return x x-position of object
 */
 int GameObject::getX(void) { return x; }
+
 
 /**
   Returns the y value.
@@ -82,23 +109,27 @@ int GameObject::getX(void) { return x; }
 */
 int GameObject::getY(void) { return y; }
 
+
 /**
   Returns the dx value.
   @return dx x component of the velocity vector
 */
 float GameObject::getDx(void)  { return dx; }   
 
+
 /**
   Returns the dy value.
   @return dy y component of the velocity vector
 */
 float GameObject::getDy(void)  { return dy; }
+
  
 /**
   Returns the image.  Not const so that it can be manipulated.
   @return image SDL_Surface * to the image.
 */
 SDL_Surface * GameObject::getImage(void)  { return image; }
+
 
 /**
   Sets the x value.  valid ranges from [0 - SCREEN_WIDTH]
@@ -154,6 +185,7 @@ void GameObject::setImage(SDL_Surface * newImage) {
 */
 void GameObject::setImage(std::string filename) {
   std::cout << filename << std::endl;
+  
   // SDL_Surface * temp = loadImage( filename );
   
   
