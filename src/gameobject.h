@@ -25,37 +25,38 @@
 class GameObject {
  private:
   int x, y; //x, y position of object
-  SDL_Surface * image; //visual representation of object
   float dx, dy; //velocity vector
+  SDL_Surface * image; //visual representation of object
 
 
  public:
+  //Constructors
   GameObject(); //default init : x,y,dx,dy = 0; image = NULL
-<<<<<<< HEAD
   GameObject(const GameObject &); //copy constructor
-=======
   GameObject(int, int, float, float, std::string);
->>>>>>> c1771115b985b0d715021d3168a2b9cd336915d0
   ~GameObject(); //destructor - SDL_Surface*
 
+  //Overloaded Operators
   GameObject & operator=(const GameObject &); //deep copy overloaded assignment
     
+  //Accessors
   int getX(void);
   int getY(void);
+  float getDy(void);
+  float getDx(void);
+  SDL_Surface * getImage(void);
+  
+  //Mutators
+  void setImage(const SDL_Surface *);
+  void setImage(const std::string);
   void setX(int);
   void setY(int);
-  SDL_Surface * getImage(void);
-  void setImage(SDL_Surface *);
-  void setImage(std::string);
-  float getDx(void);
-  float getDy(void);
   void setDx(float);
   void setDy(float);
 
 
 };
 
-//#include "staticmethods.h"
 
 
 #endif

@@ -21,11 +21,7 @@
  Default Constructor.  Initializes x, y, dx, dy to 0 and image to NULL.
 */
 GameObject::GameObject() {
-<<<<<<< HEAD
   image = new SDL_Surface;//(SDL_Surface *) malloc (sizeof(SDL_Surface *));
-=======
-  image = new SDL_Surface;
->>>>>>> c1771115b985b0d715021d3168a2b9cd336915d0
   setX(0);
   setY(0);
   setDx(0);
@@ -34,7 +30,6 @@ GameObject::GameObject() {
 }
 
 /**
-<<<<<<< HEAD
  * Copy Constructor.  Copies all data into a new object
  */
 GameObject::GameObject(const GameObject & gobj) {
@@ -46,9 +41,6 @@ GameObject::GameObject(const GameObject & gobj) {
   setImage(gobj.image);
 }
 
-=======
- Constructor.  Initializes x, y, dx, dy and image to input values.
-*/
 GameObject::GameObject(int newX, int newY, float newDx, float newDy, std::string newImage) {
   image = new SDL_Surface;
   setX(newX);
@@ -59,12 +51,10 @@ GameObject::GameObject(int newX, int newY, float newDx, float newDy, std::string
 }
 
 
->>>>>>> c1771115b985b0d715021d3168a2b9cd336915d0
 /**
  Destructor.  Frees the SDL_Surface * for the image.
 */
 GameObject::~GameObject() {
-<<<<<<< HEAD
   delete image;//free(getImage());
 }   
 
@@ -87,15 +77,6 @@ GameObject & GameObject::operator=(const GameObject & gobj) {
 }
 
 
-
-
-
-=======
-  delete image;
-}   
-
-
->>>>>>> c1771115b985b0d715021d3168a2b9cd336915d0
 /**
   Returns the x value.
   @return x x-position of object
@@ -174,7 +155,7 @@ void GameObject::setDy(float newDy) {
   Sets the image.  Expects a valid SDL_Surface * that has been optimized to the screen.
   @param newImage SDL_Surface * to set as the image.
 */
-void GameObject::setImage(SDL_Surface * newImage) {
+void GameObject::setImage(const SDL_Surface * newImage) {
   if (newImage != NULL) { image = newImage; }
 }
 
@@ -183,17 +164,11 @@ void GameObject::setImage(SDL_Surface * newImage) {
   Sets the image.  Expects a filename to go load an image from.
   @param filename name of the file to load as the image.
 */
-void GameObject::setImage(std::string filename) {
-  std::cout << filename << std::endl;
-  
-  // SDL_Surface * temp = loadImage( filename );
-  
-  
+void GameObject::setImage(const std::string filename) {
+  //  std::cout << filename << std::endl;
   SDL_Surface *loadedImage = NULL;
   SDL_Surface *formattedImage = NULL;
-
   loadedImage = IMG_Load( filename.c_str() );
-
   if(loadedImage != NULL) {
     formattedImage = SDL_DisplayFormat(loadedImage);
   } //converts image to settings specified by SDL_SetVideoMode
@@ -202,9 +177,5 @@ void GameObject::setImage(std::string filename) {
   if(formattedImage != NULL) {
     SDL_SetColorKey(formattedImage, SDL_SRCCOLORKEY, SDL_MapRGB(formattedImage->format, 0xFF, 0xFF, 0xFF));
   } //converts image to settings specified by SDL_SetVideoMode
-  // return formattedImage;
-
   image = formattedImage;
-
-  //  setImage(temp);
 }

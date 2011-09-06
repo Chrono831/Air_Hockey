@@ -15,28 +15,21 @@
  */
 
 #include "gamebox.h"
-/*
- private:
-  int w; //width
-  int h; //height
-  int x, y //inherited
-*/
-
 
 GameBox::GameBox() {
-  GameObject();
+  //GameObject();
   w = 0;
   h = 0;
 }
 
 
-GameBox::GameBox(int newX, int newY, int newW, int newH, std::string newImage) {
-  GameBox();
-  GameObject::setX(newX);
-  GameObject::setY(newY);
+GameBox::GameBox(int newX, int newY, int newW, int newH, std::string newImage) : GameObject(newX, newY, 0, 0, newImage) {
+  //GameBox();
+  //GameObject::setX(newX);
+  //GameObject::setY(newY);
   setW(newW);
   setH(newH);
-  GameObject::setImage(newImage);
+  //GameObject::setImage(newImage);
 }
 
 GameBox::~GameBox() {

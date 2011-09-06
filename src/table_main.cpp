@@ -21,7 +21,7 @@
 
 
 int main (int argc, char *argv[]) {
- std::cout << "Hello, World!\n";
+  std::cout << "Hello, World!\n";
   //These must be the first things in the program! They init SDL.
   GameObject *screen = new GameObject();
   screen->setImage(startup(screen->getImage()));

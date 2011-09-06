@@ -47,6 +47,13 @@ OBJECTS = $(patsubst %.cpp, %.o, %(SOURCES))
 #list object files here for now
 OBJECTS += staticmethods.o gameobject.o gamebox.o 
 
+#Directory Tree
+
+BASEDIR = Air_Hockey/
+SRCDIR = $(BASEDIR)/src/
+OBJDIR = $(BASEDIR)/obj/
+IMGDIR = $(BASEDIR)/images/
+
 #/usr/bin/ruby1.9.1
 
 
@@ -74,10 +81,16 @@ $(MODULES): $(OBJECTS)
 # #######################
 
 gameobject_main : gameobject.o staticmethods.o 
-	        $(CXX) $(LDFLAGS) gameobject_main.cpp gameobject.o staticmethods.o -o gameobject_main
+	$(CXX) $(LDFLAGS) gameobject_main.cpp gameobject.o staticmethods.o -o gameobject_main
 
- : stack.o PE_17-5.o
-	        $(CC) $(CFLAGS) $(LDFLAGS) PE_17-5.c stack.o -o PE_17-5
+gamebox_main : gamebox.o gameobject.o staticmethods.o
+	$(CXX) $(LDFLAGS) gamebox_main.cpp gamebox.o gameobject.o staticmethods.o -o gamebox_main
+
+
+# Specific tests
+
+table_main : gamebox.o gameobject.o staticmethods.o
+	$(CXX) $(LDFLAGS) table_main.cpp gamebox.o gameobject.o staticmethods.o -o table_main
 
 
 
