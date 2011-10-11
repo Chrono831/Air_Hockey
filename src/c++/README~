@@ -1,0 +1,27 @@
+/**
+ * Air_Hockey Project File
+ * https://github.com/Chrono831/Air_Hockey
+ * Dylan Hall
+ * dylan.p.hall@gmail.com
+ * github: Chrono831
+ * 
+ * 
+ * README
+ * 
+ * Created: Aug 31 2011 16:29:38
+ * 
+ * Comments: 
+ * 
+ */
+
+#include "stdincludes.h"
+
+
+
+int main (int argc, char *argv[]) {
+  std::cout << "Hello, World!\n";
+
+
+  return 0;
+}
+
